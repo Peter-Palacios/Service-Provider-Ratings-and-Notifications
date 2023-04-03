@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service_Provider_Ratings_and_Notifications.Models;
 using Service_Provider_Ratings_and_Notifications.Services;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
+
 
 namespace Service_Provider_Ratings_and_Notifications.Controllers
 {
@@ -27,9 +31,21 @@ namespace Service_Provider_Ratings_and_Notifications.Controllers
             return Ok(averageRating);
         }
 
-        private void NotifyNewRating(Rating rating)
+        private async void NotifyNewRating(Rating rating)
         {
+            using HttpClient client = new HttpClient();
+            string notificationsUrl = "http://localhost:8080/notifications";
 
+            var notification = new Notification
+            {
+                Id = Guid.NewGuid(),
+                ProviderId = rating.ProviderId,
+                Message = $"New rating of {rating.Value} for provider {rating.ProviderId}"
+            };
+
+            string json = JsonConvert.SerializeObject(notification);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            await client.PostAsync(notificationsUrl, content);
         }
     }
 }
