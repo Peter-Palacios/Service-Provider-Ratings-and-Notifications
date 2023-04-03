@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  dotnet-app:
+    build:
+      context: C:/Projects/Service Provider Ratings and Notifications/RatingService
+      dockerfile: Dockerfile
+  go-app:
+    build:
+      context: C:/Projects/Service Provider Ratings and Notifications/NotificationService
+      dockerfile: Dockerfile

@@ -1,0 +1,7 @@
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.csproj.AssemblyReference.cache
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.AssemblyInfoInputs.cache
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.AssemblyInfo.cs
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.csproj.CoreCompileInputs.cache
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\Service Provider Ratings and Notifications\obj\Debug\net7.0\Service Provider Ratings and Notifications.MvcApplicationPartsAssemblyInfo.cache
