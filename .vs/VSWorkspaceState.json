@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\NotificationService",
+    "\\RatingService",
+    "\\RatingService\\Controllers",
+    "\\RatingService\\Models",
+    "\\RatingService\\Properties",
+    "\\RatingService\\Services"
+  ],
+  "SelectedNode": "\\RatingService\\Service Provider Ratings and Notifications.sln",
+  "PreviewInSolutionExplorer": false
+}
