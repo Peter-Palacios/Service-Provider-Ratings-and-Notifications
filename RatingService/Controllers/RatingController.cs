@@ -34,7 +34,7 @@ namespace Service_Provider_Ratings_and_Notifications.Controllers
         private async void NotifyNewRating(Rating rating)
         {
             using HttpClient client = new HttpClient();
-            string notificationsUrl = "http://localhost:8080/notifications";
+            string notificationsUrl = "http://notification_service:8080/notifications";
 
             var notification = new Notification
             {
