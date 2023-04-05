@@ -1,0 +1,44 @@
+How to Use Project:
+
+1) Build and run services 
+	
+	cd/path
+	docker-compose build
+	docker-compose up -d
+	
+	
+2) Test Ratings Services
+
+	Going to URL:
+
+	http://localhost:5000/api/ratings/11111111-1111-1111-1111-111111111111
+	
+	shows output of 4.5
+	since the data seeded is initialized at rating of 4 and another rating of 5, returning their average
+	
+	the same can be done for
+	http://localhost:5000/api/ratings/22222222-2222-2222-2222-222222222222
+	
+	which returns an average rating of 4
+	
+	Additional Ratings can be added using xcurl:
+	
+	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "22222222-2222-2222-2222-222222222222", "Value": 1}' http://localhost:5000/api/ratings
+	
+	after running the average rating now returns a value of 3
+	
+3)Test Notifcation Services
+
+	Since the Notification Services only reflects new ratings you can see the new rating that was just added by going to the URL:
+	http://localhost:8080/notifications
+	
+	after refreshing the page again the new notification is gone
+	
+	Additional testing of Notification services can be done by changing the value of the ProviderId and Value to different values and then refreshing the localhost again:
+	
+	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "33333333-3333-3333-3333-333333333333", "Value": 1}' http://localhost:5000/api/ratings
+	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "33333333-3333-3333-3333-333333333333", "Value": 5}' http://localhost:5000/api/ratings
+	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "44444444-4444-4444-4444-444444444444", "Value": 4}' http://localhost:5000/api/ratings
+	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "55555555-5555-5555-5555-555555555555", "Value": 3}' http://localhost:5000/api/ratings
+
+

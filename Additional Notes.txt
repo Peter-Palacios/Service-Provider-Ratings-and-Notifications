@@ -1,0 +1,18 @@
+Additional notes:
+
+Before this assignment I never touched Docker or Go, so both technologies were completely new, but being a backend engineer is something I strive for so it was a great challenge and fun from my side.
+
+Submitting project as-is for the sake of time.
+
+Possible improvements :
+
+Additional unit/integrations testing can be added manually or using additonal xUnit
+
+Proper logging in Notification Service simliar to those in Rating Service
+
+Timout handling for http requests
+
+Caching for Rating service to reduce load on the data source
+
+
+

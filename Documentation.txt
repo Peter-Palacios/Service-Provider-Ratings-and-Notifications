@@ -1,0 +1,16 @@
+Maintainability:
+	Project divided into two separate services: Ratings and Notifications
+	This separation can make it easier to manage or update the services without effecting the other
+
+Reliability:
+	Error Handling in the Ratings service includes handling and logging of errors during runtime
+	HTTP response codes: services provide feedback on success or failure of requests
+	
+Scalability:
+	Project Uses Docker to containerize the services, making it wasier to scale by deploying additional instances
+	
+	Notification service is statless, which improves scalability by handling mutliple requests at the same time without
+	mainting internal state between requests. It also makes it easier to scale by adding more services
+	
+	Uses Decoupled Services: Ratings and Notifications servies communicate via HTTP, so they scale independently
+	
