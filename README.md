@@ -2,7 +2,7 @@
 
 How to Use Project:
 
-1) Build and run services 
+1)Build and run services 
 	
 	cd/path
 	
@@ -11,7 +11,7 @@ How to Use Project:
 	docker-compose up -d
 	
 	
-2) Test Ratings Services
+2)Test Ratings Services
 
 	Going to URL:
 
