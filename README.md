@@ -36,7 +36,7 @@ How to Use Project:
 	
 	after refreshing the page again the new notification is gone
 	
-	Additional testing of Notification services can be done by changing the value of the ProviderId and Value to different values and then refreshing the localhost again:
+	Additional testing of Notification services can be done by changing the value of the ProviderId and Value to different values and then refreshing the localhost 	again:
 	
 	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "33333333-3333-3333-3333-333333333333", "Value": 1}' http://localhost:5000/api/ratings
 	curl -X POST -H "Content-Type: application/json" -d '{"ProviderId": "33333333-3333-3333-3333-333333333333", "Value": 5}' http://localhost:5000/api/ratings
@@ -45,41 +45,40 @@ How to Use Project:
 
 
 
-===================================================================================================================================================================
 Documention:
 
-Maintainability:
-	Project divided into two separate services: Ratings and Notifications
-	This separation can make it easier to manage or update the services without effecting the other
+	Maintainability:
+		Project divided into two separate services: Ratings and Notifications
+		This separation can make it easier to manage or update the services without effecting the other
 
-Reliability:
-	Error Handling in the Ratings service includes handling and logging of errors during runtime
-	HTTP response codes: services provide feedback on success or failure of requests
-	
-Scalability:
-	Project Uses Docker to containerize the services, making it wasier to scale by deploying additional instances
-	
-	Notification service is statless, which improves scalability by handling mutliple requests at the same time without
-	mainting internal state between requests. It also makes it easier to scale by adding more services
-	
-	Uses Decoupled Services: Ratings and Notifications servies communicate via HTTP, so they scale independently
-	
-===================================================================================================================================================================
+	Reliability:
+		Error Handling in the Ratings service includes handling and logging of errors during runtime
+		HTTP response codes: services provide feedback on success or failure of requests
+
+	Scalability:
+		Project Uses Docker to containerize the services, making it wasier to scale by deploying additional instances
+
+		Notification service is statless, which improves scalability by handling mutliple requests at the same time without
+		mainting internal state between requests. It also makes it easier to scale by adding more services
+
+		Uses Decoupled Services: Ratings and Notifications servies communicate via HTTP, so they scale independently
+
+
 Additional notes:
 
-Before this assignment I never touched Docker or Go, so both technologies were completely new, but being a backend engineer is something I strive for so it was a great challenge and fun from my side.
+	Before this assignment I never touched Docker or Go, so both technologies were completely new, but being a backend engineer is something I strive for so it was         a great challenge and fun from my side.
 
-Submitting project as-is for the sake of time.
+	Submitting project as-is for the sake of time.
 
-Possible improvements :
+	Possible improvements :
 
-Additional unit/integrations testing can be added manually or using additonal xUnit
+	Additional unit/integrations testing can be added manually or using additonal xUnit
 
-Proper logging in Notification Service simliar to those in Rating Service
+	Proper logging in Notification Service simliar to those in Rating Service
 
-Timout handling for http requests
+	Timout handling for http requests
 
-Caching for Rating service to reduce load on the data source
+	Caching for Rating service to reduce load on the data source
 
 
 
