@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  rating_service:
+    build: ./RatingService
+    ports:
+       - "5000:5000"
+
+    environment:
+      - ASPNETCORE_URLS=http://*:5000  
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  notification_service:
+    build: ./NotificationService
+    ports:
+      - "8080:8080"      
