@@ -5,7 +5,9 @@ How to Use Project:
 1) Build and run services 
 	
 	cd/path
+	
 	docker-compose build
+	
 	docker-compose up -d
 	
 	
