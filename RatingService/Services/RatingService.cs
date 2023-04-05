@@ -4,7 +4,6 @@ namespace Service_Provider_Ratings_and_Notifications.Services
 {
     public class RatingServiceImp:IRatingService
     {
-        //private List<Rating> _ratings = new List<Rating>();
 
         private readonly List<Rating> _ratings = new();
 

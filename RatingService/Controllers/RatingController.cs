@@ -8,8 +8,6 @@ using Newtonsoft.Json;
 
 namespace Service_Provider_Ratings_and_Notifications.Controllers
 {
-    //[Route("ratings")]
-    //[ApiController]
     [Route("api/ratings")]
     [ApiController]
     public class RatingController : ControllerBase
@@ -21,13 +19,6 @@ namespace Service_Provider_Ratings_and_Notifications.Controllers
             rating_Service = ratingService;
             this.logger=logger;
         }
-        // [HttpPost]
-        // public IActionResult Post([FromBody] Rating rating)
-        // {
-        //     rating_Service.AddRating(rating);
-        //     NotifyNewRating(rating);
-        //     return Ok();
-        // }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Rating rating)
@@ -43,23 +34,6 @@ namespace Service_Provider_Ratings_and_Notifications.Controllers
             return Ok(averageRating);
         }
 
-
-        // private async void NotifyNewRating(Rating rating)
-        // {
-        //     using HttpClient client = new HttpClient();
-        //     string notificationsUrl = "http://notification_service:8080/notifications";
-
-        //     var notification = new Notification
-        //     {
-        //         Id = Guid.NewGuid(),
-        //         ProviderId = rating.ProviderId,
-        //         Message = $"New rating of {rating.Value} for provider {rating.ProviderId}"
-        //     };
-
-        //     string json = JsonConvert.SerializeObject(notification);
-        //     var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //     await client.PostAsync(notificationsUrl, content);
-        // }
 
         private async Task NotifyNewRating(Rating rating)
 {
