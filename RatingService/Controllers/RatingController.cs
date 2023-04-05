@@ -8,20 +8,32 @@ using Newtonsoft.Json;
 
 namespace Service_Provider_Ratings_and_Notifications.Controllers
 {
-    [Route("ratings")]
+    //[Route("ratings")]
+    //[ApiController]
+    [Route("api/ratings")]
     [ApiController]
     public class RatingController : ControllerBase
     {
         private readonly IRatingService rating_Service;
-        public RatingController(IRatingService ratingService)
+        private readonly ILogger<RatingController> logger;
+        public RatingController(IRatingService ratingService,ILogger<RatingController> logger)
         {
             rating_Service = ratingService;
+            this.logger=logger;
         }
+        // [HttpPost]
+        // public IActionResult Post([FromBody] Rating rating)
+        // {
+        //     rating_Service.AddRating(rating);
+        //     NotifyNewRating(rating);
+        //     return Ok();
+        // }
+
         [HttpPost]
-        public IActionResult Post([FromBody] Rating rating)
+        public async Task<IActionResult> Post([FromBody] Rating rating)
         {
             rating_Service.AddRating(rating);
-            NotifyNewRating(rating);
+            await NotifyNewRating(rating);
             return Ok();
         }
         [HttpGet("{providerId}")]
@@ -31,21 +43,54 @@ namespace Service_Provider_Ratings_and_Notifications.Controllers
             return Ok(averageRating);
         }
 
-        private async void NotifyNewRating(Rating rating)
+
+        // private async void NotifyNewRating(Rating rating)
+        // {
+        //     using HttpClient client = new HttpClient();
+        //     string notificationsUrl = "http://notification_service:8080/notifications";
+
+        //     var notification = new Notification
+        //     {
+        //         Id = Guid.NewGuid(),
+        //         ProviderId = rating.ProviderId,
+        //         Message = $"New rating of {rating.Value} for provider {rating.ProviderId}"
+        //     };
+
+        //     string json = JsonConvert.SerializeObject(notification);
+        //     var content = new StringContent(json, Encoding.UTF8, "application/json");
+        //     await client.PostAsync(notificationsUrl, content);
+        // }
+
+        private async Task NotifyNewRating(Rating rating)
+{
+    try
+    {
+        using HttpClient client = new HttpClient();
+        string notificationsUrl = "http://notification_service:8080/notifications";
+
+        var notification = new Notification
         {
-            using HttpClient client = new HttpClient();
-            string notificationsUrl = "http://notification_service:8080/notifications";
+            Id = Guid.NewGuid(),
+            ProviderId = rating.ProviderId,
+            Message = $"New rating of {rating.Value} for provider {rating.ProviderId}"
+        };
 
-            var notification = new Notification
-            {
-                Id = Guid.NewGuid(),
-                ProviderId = rating.ProviderId,
-                Message = $"New rating of {rating.Value} for provider {rating.ProviderId}"
-            };
+        string json = JsonConvert.SerializeObject(notification);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        HttpResponseMessage response = await client.PostAsync(notificationsUrl, content);
 
-            string json = JsonConvert.SerializeObject(notification);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await client.PostAsync(notificationsUrl, content);
+        if (!response.IsSuccessStatusCode)
+        {
+            // Log the error or throw an exception
+             logger.LogError($"Error sending notification: {response.StatusCode}");
         }
+    }
+    catch (Exception ex)
+    {
+        // Log the exception
+        logger.LogError($"Error sending notification: {ex.Message}");
+    }
+}
+
     }
 }
