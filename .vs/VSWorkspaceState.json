@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\NotificationService",
     "\\RatingService",
     "\\RatingService\\Controllers",
     "\\RatingService\\Models",
