@@ -68,11 +68,7 @@ Documention:
 
 Additional notes:
 
-	Before this assignment I never touched Docker or Go, so both technologies were completely new, but being a backend engineer is something I strive for so it was a great challenge and fun from my side.
-
-	Submitting project as-is for the sake of time.
-
-	Possible improvements :
+	improvements looking to add :
 
 	Additional unit/integrations testing can be added manually or using additonal xUnit
 
